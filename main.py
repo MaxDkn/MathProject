@@ -2,6 +2,7 @@ import time
 
 
 def main(pnp: int):
+    #  This function searches for the first pnp prime numbers that it can
     start = time.time()
     i = 3
     list = [2]
@@ -23,6 +24,7 @@ def main(pnp: int):
 
 
 def new_main(t: int):
+    #  This function searches for all the prime numbers it can for t second
     start = time.time()
     i = 2
     first_number = [2]
@@ -45,3 +47,4 @@ def new_main(t: int):
 
 for item in new_main(10):
     print(item)
+input()
