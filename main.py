@@ -131,24 +131,46 @@ class AlgoToSearch:
 
     def the_first_prime_numbers(self, index):
         i = 3
-        list_of_prime_numbers = self.the_first_prime_number
-        while len(list_of_prime_numbers) != index:
+        prime_numbers = self.the_first_prime_number
+        while len(prime_numbers) != index:
             divisible = False
-            for number in list_of_prime_numbers:
+            for number in prime_numbers:
                 if i % number == 0:
                     divisible = True
                 if divisible:
                     break
 
             if not divisible:
-                list_of_prime_numbers.append(i)
+                prime_numbers.append(i)
             i += 2
-        return list_of_prime_numbers
+        return prime_numbers
+
+    def the_first_pairs_prime_numbers(self, index):
+        i = 2
+        prime_numbers = self.the_first_prime_number
+        pairs_numbers = []
+
+        while len(pairs_numbers) != index:
+            divisible = False
+            for number in prime_numbers:
+                if i % number == 0:
+                    divisible = True
+                    break
+
+            if not divisible:
+                prime_numbers.append(i)
+                if prime_numbers[-1] - prime_numbers[-2] == 2:
+                    #  pairs_numbers.append(f'[{prime_numbers[-2]} | {prime_numbers[-1]}]')
+                    pairs_numbers.append((prime_numbers[-2], prime_numbers[-1]))
+
+            i += 1
+        return pairs_numbers
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print(AlgoToSearch().the_first_prime_numbers(20))
+    print(AlgoToSearch().the_first_pairs_prime_numbers(10))
     print(AlgoToSearch().the_fibonacci_sequence(20))
     print(AlgoToSearch().phi)
     print(Orthonormal((0, 0), (4, 2), (1, 4)).search_z_point_square_arguments(5, 5, 10))
